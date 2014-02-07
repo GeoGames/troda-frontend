@@ -10,64 +10,71 @@
     </style>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
     <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            function completeMission()
-            {
-                if (navigator.geolocation)
-                {
-                    navigator.geolocation.getCurrentPosition(completeMission);
-                    registerData({coords:{latitude:4, longitude:5}});
-                }
-                else{
-                    alert('location not supported');
-                }
-            }
-
-            function missionResponse(data){
-                if(data.success == true){
-                    alert('Mission complete');
-                }else{
-                    alert('Try again');
-                }
-            }
-
-            function registerData(position)
-            {
-                var missionId = getURLParameter("missionId");
-                var userId = getURLParameter("userId");
-
-                console.log("missionId: " + missionId);
-                console.log("userId: " + userId);
-                console.log("userId: " + userId);
-                console.log("lat: " +  position.coords.latitude);
-                console.log("lon: " +  position.coords.longitude);
-
-                $.post("url?callback=missionResponse", JSON.stringify({
-                    missionId: missionId,
-                    userId: userId,
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude
-                }), missionResponse);
-            }
-
-            function getURLParameter(name) {
-                return decodeURI(
-                        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
-                );
-            }
-
-            $("#registerFind").click(function(e){
-                e.preventDefault();
-                completeMission();
-                return false;
-            });
-        });
-
-
-    </script>
 </head>
 <body>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        function completeMission()
+        {
+            if (navigator.geolocation)
+            {
+                navigator.geolocation.getCurrentPosition(completeMission);
+                registerData({coords:{latitude:4, longitude:5}});
+            }
+            else{
+                alert('location not supported');
+            }
+        }
+
+        function missionResponse(data){
+            if(data.success == true){
+                alert('Mission complete');
+            }else{
+                alert('Try again');
+            }
+        }
+
+        function registerData(position)
+        {
+            var missionId = getURLParameter("missionId");
+            var userId = getURLParameter("userId");
+
+            console.log("missionId: " + missionId);
+            console.log("userId: " + userId);
+            console.log("userId: " + userId);
+            console.log("lat: " +  position.coords.latitude);
+            console.log("lon: " +  position.coords.longitude);
+
+            $.post("url?callback=missionResponse", JSON.stringify({
+                missionId: missionId,
+                userId: userId,
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+            }), missionResponse);
+        }
+
+        function getURLParameter(name) {
+            return decodeURI(
+                    (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+            );
+        }
+
+        $("#registerFind").click(function(e){
+            e.preventDefault();
+            completeMission();
+            return false;
+        });
+
+        var map = L.map('map').setView([51.505, -0.09], 13);
+        L.tileLayer('http://{s}.tile.cloudmade.com/API-key/997/256/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+            maxZoom: 18
+        }).addTo(map);
+    });
+
+
+</script>
 
 <p>Velkommen til GeoOppdag!</p>
 
