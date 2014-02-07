@@ -21,3 +21,15 @@ var troda=function(){
         ]
         }
 }();
+
+
+
+function createMap(divName){
+    var topo = L.tileLayer('http://opencache.statkart.no/gatekeeper/gk/gk.open_gmaps?layers=topo2&zoom={z}&x={x}&y={y}', {
+        maxZoom: 16,
+        attribution: '<a href="http://www.statkart.no/">Statens kartverk</a>'
+    });
+
+    return  new L.Map(divName, {layers: [topo], center: new L.LatLng(60.389444, 5.33), zoom: 13 });
+
+}

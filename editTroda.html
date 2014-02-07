@@ -2,39 +2,73 @@
 <head>
     <meta charset="utf-8">
     <title>GeoOppdag</title>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
     <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
     <script type="text/javascript" src="js/troda.js"></script>
     <script type="text/javascript">
 
         /*$.post( "ajax/test.html", function( data ) {
-            $( ".result" ).html( data );
+        $( ".result" ).html( data );
         });*/
     </script>
 
     <script type="text/javascript">
+
         console.log("trodaid:"+troda.id);
         console.log("trodaid:"+troda.tasks);
+
+
+        $(document).ready(function(){
+        var map = createMap("map");
+        });
     </script>
+    <style type="text/css">
+        #map-wrapper {
+        width: 100%;
+        height: 400px;
+        position: relative;
+        border: 1px solid black;
+        }
+
+        #map {
+        width: 100%;
+        height: 100%;
+        background-color: green;
+        }
+
+        #button-wrapper {
+        position: absolute;
+        top: 10px;
+        left:90%;
+        width: 100%;
+        }
+        #button-small-box {
+        width: 100px;
+        position: absolute;
+        top: 10px;
+        left:10px;
+            background-color:white;
+        }
+
+    </style>
 </head>
 <body>
 
-<p>Opprett troda</p>
+<p>Rediger troda</p>
 
-<form action="" id="" method="POST">
-    <p>
-        <label for="oppdragsnavn">Navn på oppdrag</label>
-        <input type="text" name="name" id="oppdragsnavn">
-    </p>
-    <p>
-        <label for="north">Nord</label>
-        <input type="text" name="name" id="north">
-    </p>
-    <p>
-        <label for="east">Øst</label>
-        <input type="text" name="name" id="east">
-    </p>
-    <p>
-        <input type="submit" value="Submit"/>
-    </p>
-</form>
+
+<div class="span9" style="height:100%">
+    <div id="map-wrapper">
+        <div id="map"></div>
+        <div id="button-wrapper">
+            <div id="button-small-box">
+                <input type="checkbox" id="kultur_layer" value="Bike" checked">Kultur</input><br>
+                <input type="checkbox" id="Natur_layer" value="Bike" checked>Natur</input><br>
+                <input type="checkbox" id="Arkitektur_layer" value="Bike" checked>Arkitektur</input><br>
+                <input type="checkbox" id="Hyttetur_layer" value="Bike" checked>Hyttetur</input><br>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
