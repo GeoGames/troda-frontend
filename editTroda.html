@@ -10,6 +10,17 @@
         });*/
     </script>
 
+    <script type="text/javascript">
+        function getURLParameter(name) {
+            return decodeURI(
+                (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+            );
+        }
+        function getTrodaId() {
+            return getURLParameter("trodaid");
+        }
+        console.log("trodaid:"+getTrodaId());
+    </script>
 </head>
 <body>
 
