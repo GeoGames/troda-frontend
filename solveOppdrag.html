@@ -10,17 +10,21 @@
     </style>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
     <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="js/troda.js"></script>
+
 </head>
 <body>
 
 <script type="text/javascript">
     $(document).ready(function(){
+6
         function completeMission()
         {
             if (navigator.geolocation)
             {
-                navigator.geolocation.getCurrentPosition(completeMission);
-                registerData({coords:{latitude:4, longitude:5}});
+                console.log('got location');
+                navigator.geolocation.getCurrentPosition(registerData);
+                //registerData({coords:{latitude:4, longitude:5}});
             }
             else{
                 alert('location not supported');
