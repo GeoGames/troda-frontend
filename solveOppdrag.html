@@ -19,8 +19,9 @@
         {
             if (navigator.geolocation)
             {
-                navigator.geolocation.getCurrentPosition(completeMission);
-                registerData({coords:{latitude:4, longitude:5}});
+                console.log('got location');
+                navigator.geolocation.getCurrentPosition(registerData);
+                //registerData({coords:{latitude:4, longitude:5}});
             }
             else{
                 alert('location not supported');
