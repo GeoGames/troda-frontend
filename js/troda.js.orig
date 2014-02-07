@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function getURLParameter(name) {
     return decodeURI(
         (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
@@ -19,5 +20,18 @@ var troda=function(){
         tasks:[
             getTask(1234)
         ]
-        }
+    }
+
+=======
+function troda_getURLParameter(name) {
+    return decodeURI(
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+    );
+}
+
+var troda = function(){
+    return{
+        id:5
+    }
+>>>>>>> e25bbeef0956d60b5e90e7638fa387a0d84a61d3
 }();
