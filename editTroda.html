@@ -2,7 +2,8 @@
 <head>
     <meta charset="utf-8">
     <title>GeoOppdag</title>
-    <script type="text/javascript" src="js/jquery-2.1.0.min.js"/>
+    <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="js/troda.js"></script>
     <script type="text/javascript">
 
         /*$.post( "ajax/test.html", function( data ) {
@@ -11,15 +12,8 @@
     </script>
 
     <script type="text/javascript">
-        function getURLParameter(name) {
-            return decodeURI(
-                (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
-            );
-        }
-        function getTrodaId() {
-            return getURLParameter("trodaid");
-        }
-        console.log("trodaid:"+getTrodaId());
+        console.log("trodaid:"+troda.id);
+        console.log("trodaid:"+troda.tasks);
     </script>
 </head>
 <body>
