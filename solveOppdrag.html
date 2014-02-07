@@ -66,11 +66,14 @@
             return false;
         });
 
-        var map = L.map('map').setView([51.505, -0.09], 13);
-        L.tileLayer('http://{s}.tile.cloudmade.com/API-key/997/256/{z}/{x}/{y}.png', {
-            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-            maxZoom: 18
-        }).addTo(map);
+        var topo = L.tileLayer('http://opencache.statkart.no/gatekeeper/gk/gk.open_gmaps?layers=topo2&zoom={z}&x={x}&y={y}', {
+            maxZoom: 16,
+            attribution: '<a href="http://www.statkart.no/">Statens kartverk</a>'
+        });
+        var map = new L.Map('map', {layers: [topo], center: new L.LatLng(60.389444, 5.33), zoom: 13 });
+
+
+
     });
 
 
@@ -79,6 +82,7 @@
 <p>Velkommen til GeoOppdag!</p>
 
 <div id="map"></div>
+
 
 <form>
     <input type="submit" id="registerFind" value="register"/>
