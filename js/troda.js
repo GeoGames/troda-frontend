@@ -33,3 +33,7 @@ function createMap(divName){
     return  new L.Map(divName, {layers: [topo], center: new L.LatLng(60.389444, 5.33), zoom: 13 });
 
 }
+
+function changeLayer(cb) {
+  console.log("layer"+cb.id+"set to " + cb.checked);
+}
