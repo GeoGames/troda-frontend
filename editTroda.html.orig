@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>GeoOppdag</title>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+    <link rel="stylesheet" href="css/troda.css"/>
+    <link rel="stylesheet" href="libs/leaflet-contextmenu/leaflet.contextmenu.css"/>
+
+    <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+    <script type="text/javascript" src="libs/leaflet-contextmenu/leaflet.contextmenu.js"></script>
+
+    <script type="text/javascript" src="js/troda.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var trodaId = loadTroda();
+            var map = createMap("map", trodaId);
+            loadPoints(map, "kulturminner");
+            map.on('viewreset', function(){
+                loadPoints(map, "kulturminner");
+            });
+
+        });
+    </script>
+</head>
+<body>
+
+<p>Rediger troda: <span id="nameOfTroda"></span></p>
+
+
+<div class="span9" style="height:100%">
+    <div id="map-wrapper">
+        <div id="map"></div>
+        <div id="button-wrapper">
+            <div id="button-small-box">
+                <input type="checkbox" id="kultur" value="Bike" onclick='changeLayer(this);'>Kultur</input><br>
+                <input type="checkbox" id="Natur" value="Bike" checked onclick='changeLayer(this);'>Natur</input><br>
+                <input type="checkbox" id="Arkitektur" value="Bike" onclick='changeLayer(this);'>Arkitektur</input><br>
+                <input type="checkbox" id="Hyttetur" value="Bike" checked onclick='changeLayer(this);'>Hyttetur</input><br>
+            </div>
+        </div>
+    </div>
+</div>      '
+
+<div hidden="true">
+    <div id="edit_task">
+<<<<<<< HEAD
+        edit a task <br>
+        navn <input type="text" name="name" id="trodaName"><br>
+        beskrivelse <input type="text" name="name" id="trodaName"><br>
+        type <select>
+        <option value="First" style="content:url('icons/Master-Shifu-256.png')">First</option>
+        <option value="Second"  style="background-image:url(image2.png);">Second</option>
+        <option value="Third" style="background-image:url(image3.png);">Third</option>
+        <option value="Fourth"  style="background-image:url(image4.png);">Fourth</option>
+    </select>
+=======
+        <h3>edit a task</h3>
+        <p>
+        <label for="challengeName">Navn</label>
+        <input type="text" name="challengeName" id="challengeName">
+        </p>
+        <p>
+        <label for="challengeDescription">Beskrivelse</label>
+        <input type="text" name="challengeDescription" id="challengeDescription">
+        </p>
+        <p>
+        <label for="challengeType">challengetype</label>
+        <select name="challengeType" id="challengeType">
+            <option value="First" style="background-image:url(icons/Master-Shifu-256.png)">First</option>
+            <option value="Second"  style="background-image:url(image2.png);">Second</option>
+            <option value="Third" style="background-image:url(image3.png);">Third</option>
+            <option value="Fourth"  style="background-image:url(image4.png);">Fourth</option>
+        </select>
+        </p>
+
+        <a href="#" id="add">add to toda</a>
+>>>>>>> 977e77af105720cd42aa22a50ae0267a2ca084eb
+    </div>
+
+
+</div>
+</body>
+</html>
