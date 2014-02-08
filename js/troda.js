@@ -29,15 +29,23 @@ function loadTroda(){
         function(data){
             $("#nameOfTroda").text(data.name);
             console.log(data);
-    });
+        });
     return trodaId;
 }
 
-function editTask(marker){
+
+function editTask(marker, map){
+    (function(marker, map){
+        $("#add").unbind('click');
+        $("#add").click(function(e){
+            console.log(marker);
+            /*map.removeLayer(marker);*/
+            marker.setOpacity(0.1);
+
+            })})(marker, map);
     editor=document.getElementById("edit_task");
     return editor;
 }
-
 
 
 function addPoint(e){
@@ -120,10 +128,15 @@ function loadPoints(map, dataset){
     var maxll=bounds.getNorthEast();
 
     $.get("http://localhost:3007/api/finn/" + dataset +"/?bbox="+minll.lng+','+minll.lat+','+maxll.lng+','+maxll.lat, function (data){
-        console.log(data[0]);
+        console.log(data[0].geojson);
+        var geoJsonLayer;
+
         for (var i=0; i < data.length; i++){
-            var marker = L.geoJson(data[i].geojson).addTo(map);
-            marker.bindPopup(editTask(marker));
+            geoJsonLayer = L.geoJson(data[i].geojson).addTo(map);
+            (function(geoJsonLayer, map){
+                geoJsonLayer.bindPopup(editTask(geoJsonLayer, map));
+            })(geoJsonLayer, map);
+
         }
 
     });

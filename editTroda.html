@@ -47,15 +47,26 @@
 
 <div hidden="true">
     <div id="edit_task">
-        edit a task <br>
-        navn <input type="text" name="name" id="trodaName">
-        beskrivelse <input type="text" name="name" id="trodaName">
-        type <select>
-        <option value="First" style="background-image:url(icons/Master-Shifu-256.png)">First</option>
-        <option value="Second"  style="background-image:url(image2.png);">Second</option>
-        <option value="Third" style="background-image:url(image3.png);">Third</option>
-        <option value="Fourth"  style="background-image:url(image4.png);">Fourth</option>
-    </select>
+        <h3>edit a task</h3>
+        <p>
+        <label for="challengeName">Navn</label>
+        <input type="text" name="challengeName" id="challengeName">
+        </p>
+        <p>
+        <label for="challengeDescription">Beskrivelse</label>
+        <input type="text" name="challengeDescription" id="challengeDescription">
+        </p>
+        <p>
+        <label for="challengeType">challengetype</label>
+        <select name="challengeType" id="challengeType">
+            <option value="First" style="background-image:url(icons/Master-Shifu-256.png)">First</option>
+            <option value="Second"  style="background-image:url(image2.png);">Second</option>
+            <option value="Third" style="background-image:url(image3.png);">Third</option>
+            <option value="Fourth"  style="background-image:url(image4.png);">Fourth</option>
+        </select>
+        </p>
+
+        <a href="#" id="add">add to toda</a>
     </div>
 
 
