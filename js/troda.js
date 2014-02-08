@@ -17,6 +17,7 @@ var troda=function(){
         id:getURLParameter("trodaid"),
         name:"someName",
         tasks:[
+            getTask(1234),
             getTask(1234)
         ]
     }
@@ -30,6 +31,11 @@ function loadTroda(){
             console.log(data);
     });
     return trodaId;
+}
+
+function editTask(){
+    editor=document.getElementById("edit_task");
+    return editor;
 }
 
 function createMap(divName, trodaId){
@@ -49,7 +55,7 @@ function createMap(divName, trodaId){
 
         marker.addTo(map);
         markers.push(marker);
-
+        marker.bindPopup(editTask());
         $.post("http://localhost:3007/api/troda/" + trodaId + "/tasks" ,{ lat: e.lat, lon: e.lon }, function(){console.log('added lonlat');});
     }
 

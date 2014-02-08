@@ -18,6 +18,13 @@
     left:90%;
     width: 100%;
 }
+#debug-links {
+     position: absolute;
+     top: 200px;
+     left:20px;
+     display: block;
+    background-color:white;
+ }
 #button-small-box {
     width: 100px;
     position: absolute;

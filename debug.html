@@ -2,12 +2,19 @@
 <head>
     <meta charset="utf-8">
     <title>GeoOppdag</title>
+    <link rel="stylesheet" href="css/troda.css"/>
 </head>
 <body>
+<div id="debug-links" >
+        Debug menu  <br>
+        <a href="editTroda.html?trodaid=1234" target="trodaframe">editTroda</a><br>
+        <a href="createTroda.html?trodaid=1234" target="trodaframe">createTroda</a><br>
+        <a href="solveTroda.html?trodaid=1234" target="trodaframe">solveTroda</a><br>
+</div>
+<div id=page>
 
-<p>Debug links</p>
+    <iframe id="trodaframe" width=100% height=600px>
 
-
-
-<a href="editTroda.html?trodaid=1234">editTroda.html?trodaid=1234</a>
+    </iframe>
+</div>
 </body>

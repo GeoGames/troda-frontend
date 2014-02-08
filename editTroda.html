@@ -16,8 +16,8 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-            var trodaId = loadTroda();
-            createMap("map", trodaId);
+        var trodaId = loadTroda();
+        createMap("map", trodaId);
         });
     </script>
 </head>
@@ -38,6 +38,22 @@
             </div>
         </div>
     </div>
+</div>      '
+
+<div hidden="true">
+    <div id="edit_task">
+        edit a task <br>
+        navn <input type="text" name="name" id="trodaName">
+        beskrivelse <input type="text" name="name" id="trodaName">
+        type <select>
+        <option value="First" style="background-image:url(icons/Master-Shifu-256.png)">First</option>
+        <option value="Second"  style="background-image:url(image2.png);">Second</option>
+        <option value="Third" style="background-image:url(image3.png);">Third</option>
+        <option value="Fourth"  style="background-image:url(image4.png);">Fourth</option>
+    </select>
+    </div>
+
+
 </div>
 </body>
 </html>
