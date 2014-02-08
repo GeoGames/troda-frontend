@@ -4,80 +4,26 @@
     <meta charset="utf-8">
     <title>GeoOppdag</title>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+    <link rel="stylesheet" href="css/troda.css"/>
+    <link rel="stylesheet" href="libs/leaflet-contextmenu/leaflet.contextmenu.css"/>
+
+    <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+    <script type="text/javascript" src="libs/leaflet-contextmenu/leaflet.contextmenu.js"></script>
+
+    <script type="text/javascript" src="js/troda.js"></script>
+
     <style type="text/css">
         #map {
             height: 480px;
         }
     </style>
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
-    <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
-    <script type="text/javascript" src="js/troda.js"></script>
-
 </head>
 <body>
 
 <script type="text/javascript">
     $(document).ready(function(){
-        6
-        function completeMission()
-        {
-            if (navigator.geolocation)
-            {
-                console.log('got location');
-                navigator.geolocation.getCurrentPosition(registerData);
-                //registerData({coords:{latitude:4, longitude:5}});
-            }
-            else{
-                alert('location not supported');
-            }
-        }
-
-        function missionResponse(data){
-            if(data.success == true){
-                alert('Mission complete');
-            }else{
-                alert('Try again');
-            }
-        }
-
-        function registerData(position)
-        {
-            var missionId = getURLParameter("missionId");
-            var userId = getURLParameter("userId");
-
-            console.log("missionId: " + missionId);
-            console.log("userId: " + userId);
-            console.log("userId: " + userId);
-            console.log("lat: " +  position.coords.latitude);
-            console.log("lon: " +  position.coords.longitude);
-
-            $.post("url?callback=missionResponse", JSON.stringify({
-                missionId: missionId,
-                userId: userId,
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
-            }), missionResponse);
-        }
-
-        function getURLParameter(name) {
-            return decodeURI(
-                    (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
-            );
-        }
-
-        $("#registerFind").click(function(e){
-            e.preventDefault();
-            completeMission();
-            return false;
-        });
-
-        var topo = L.tileLayer('http://opencache.statkart.no/gatekeeper/gk/gk.open_gmaps?layers=topo2&zoom={z}&x={x}&y={y}', {
-            maxZoom: 16,
-            attribution: '<a href="http://www.statkart.no/">Statens kartverk</a>'
-        });
-        var map = new L.Map('map', {layers: [topo], center: new L.LatLng(60.389444, 5.33), zoom: 13 });
-
-
+        createSolverMap("map");
 
     });
 

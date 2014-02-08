@@ -56,6 +56,16 @@ function addPoint(e){
     $.post("http://localhost:3007/api/troda/" + trodaId + "/tasks" ,{ lat: e.lat, lon: e.lon }, function(){console.log('added lonlat');});
 }
 
+var userIcon = L.icon({
+    iconUrl: 'icons/PERSON.png',
+
+    iconSize:     [46, 40], // size of the icon
+    iconAnchor:   [12, 40], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0,0] // point from which the popup should open relative to the iconAnchor
+});
+
+
+
 
 function createMap(divName, trodaId){
     var map;
@@ -74,6 +84,8 @@ function createMap(divName, trodaId){
         marker.bindPopup(editTask(marker));
         $.post("http://localhost:3007/api/troda/" + trodaId + "/tasks" ,{ lat: e.lat, lon: e.lon }, function(){console.log('added lonlat');});
     }
+
+
 
     function centerMap (e) {
         map.panTo(e.latlng);
@@ -118,9 +130,82 @@ function createMap(divName, trodaId){
     return map;
 }
 
+    var userMarker;
+
+
+function createSolverMap(divName, trodaId){
+    var map;
+    var topo = L.tileLayer('http://opencache.statkart.no/gatekeeper/gk/gk.open_gmaps?layers=topo2&zoom={z}&x={x}&y={y}', {
+        maxZoom: 16,
+        attribution: '<a href="http://www.statkart.no/">Statens kartverk</a>'
+    });
+
+    function showCoordinates (e) {
+        alert(e.latlng);
+    }
+
+         function moveHere(e){
+             if(userMarker !== undefined){
+                  map.removeLayer(userMarker);
+                  userMarker=undefined;
+             }
+             userMarker = new L.Marker(e.latlng , {icon:userIcon,draggable:true});
+             userMarker.addTo(map);
+         }
+
+    function centerMap (e) {
+        map.panTo(e.latlng);
+    }
+
+    function zoomIn (e) {
+        map.zoomIn();
+    }
+
+    function zoomOut (e) {
+        map.zoomOut();
+    }
+
+    map = new L.Map(divName, {
+        layers: [topo],
+        center: new L.LatLng(60.389444, 5.33),
+        zoom: 13 ,
+        contextmenu: true,
+        contextmenuWidth: 140,
+        contextmenuItems: [
+        {
+            text: 'Flytt hit',
+            callback: moveHere
+        }]});
+
+
+    return map;
+}
+
+var layers=new Array();
+layers["kulturminner"]={
+     enabled:true
+}
+layers["topper"]={
+     enabled:true
+}
+layers["ssr"]={
+     enabled:true
+}
+
 function changeLayer(cb) {
+// id == dataset. Stygt men sandt
+    layers[cb.id].enabled= cb.checked;
+    if(layers[cb.id].enabled){
+
+    }
+    else {
+
+    }
+
     console.log("layer"+cb.id+"set to " + cb.checked);
 }
+
+var datasets;
 
 function loadPoints(map, dataset){
     var bounds=map.getBounds();
