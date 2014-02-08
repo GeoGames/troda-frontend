@@ -27,12 +27,12 @@ function loadTroda(){
     $.get("http://localhost:3007/api/troda/"+trodaId,
         function(data){
             $("#trodaName").text(data.name);
+            console.log(data);
     });
+    return trodaId;
 }
 
-
-
-function createMap(divName){
+function createMap(divName, trodaId){
     var map;
     var markers = [];
     var topo = L.tileLayer('http://opencache.statkart.no/gatekeeper/gk/gk.open_gmaps?layers=topo2&zoom={z}&x={x}&y={y}', {
@@ -46,8 +46,11 @@ function createMap(divName){
 
     function addPoint(e){
         var marker = L.marker(e.latlng);
+
         marker.addTo(map);
         markers.push(marker);
+
+        $.post("http://localhost:3007/api/troda/" + trodaId + "/tasks" ,{ lat: e.lat, lon: e.lon }, function(){console.log('added lonlat');});
     }
 
     function centerMap (e) {
