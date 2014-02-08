@@ -47,9 +47,9 @@ input[type="checkbox"],input[type="radio"] {
 #edit_task label {
     display: inline-block;
     font-weight: bold;
-    width: 45%;
+    min-width: 45%;
     }
 #edit_task input[type="text"] {
     display: inline-block;
-    width: 45%;
+    min-width: 45%;
 }
