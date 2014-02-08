@@ -44,3 +44,12 @@ html, body {
 input[type="checkbox"],input[type="radio"] {
     margin-right: 5px;
 }
+#edit_task label {
+    display: inline-block;
+    font-weight: bold;
+    width: 45%;
+    }
+#edit_task input[type="text"] {
+    display: inline-block;
+    width: 45%;
+}
