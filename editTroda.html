@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>GeoOppdag</title>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Titillium+Web:400,200|Yanone+Kaffeesatz:300">
     <link rel="stylesheet" href="css/troda.css"/>
     <link rel="stylesheet" href="libs/leaflet-contextmenu/leaflet.contextmenu.css"/>
 
@@ -40,17 +41,18 @@
     </div>
 </div>      '
 
-<div hidden="true">
-    <div id="edit_task">
-        edit a task <br>
-        navn <input type="text" name="name" id="trodaName">
-        beskrivelse <input type="text" name="name" id="trodaName">
-        type <select>
-        <option value="First" style="background-image:url(icons/Master-Shifu-256.png)">First</option>
-        <option value="Second"  style="background-image:url(image2.png);">Second</option>
-        <option value="Third" style="background-image:url(image3.png);">Third</option>
-        <option value="Fourth"  style="background-image:url(image4.png);">Fourth</option>
-    </select>
+<div hidden="true">    <div id="edit_task">
+        <h2>Edit a task</h2>
+        <p>navn <input type="text" name="name" id="trodaName"></p>
+        <p>beskrivelse <input type="text" name="name" id="trodaName"></p>
+        <p>type
+            <form>
+                <input type="radio" name="type_task" value="First">First
+                <input type="radio" name="type_task" value="Second">Second
+                <input type="radio" name="type_task" value="Third">Third
+                <input type="radio" name="type_task" value="Fourth">Fourth
+            </form>
+    </p>
     </div>
 
 
