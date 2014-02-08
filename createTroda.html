@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Troda</title>
+    <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#trodaForm").submit(function(e){
+                console.log("called");
+                e.preventDefault();
+                $.post("http://localhost:3007/api/troda", $( "#trodaForm" ).serialize(), trodaCreate);
+
+            });
+
+            function trodaCreate(data){
+                window.location = "editTroda.html?trodaId=" + data[0]._id;
+            }
+        });
+    </script>
+</head>
+<body>
+
+<p>Opprett troda</p>
+
+<form id="trodaForm">
+
+    <p>
+        <label for="trodaName">Navn på troda</label>
+        <input type="text" name="name" id="trodaName">
+    </p>
+
+    <p>
+        <input type="submit" value="Submit"/>
+    </p>
+
+</form>
+</body>
+</html>
