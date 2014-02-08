@@ -17,14 +17,19 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-        var trodaId = loadTroda();
-        createMap("map", trodaId);
+            var trodaId = loadTroda();
+            var map = createMap("map", trodaId);
+            loadPoints(map, "kulturminner");
+            map.on('viewreset', function(){
+                loadPoints(map, "kulturminner");
+            });
+
         });
     </script>
 </head>
 <body>
 
-<p>Rediger troda: <span id="trodaName"></span></p>
+<p>Rediger troda: <span id="nameOfTroda"></span></p>
 
 
 <div class="span9" style="height:100%">
@@ -39,20 +44,30 @@
             </div>
         </div>
     </div>
-</div>      '
+</div>
 
-<div hidden="true">    <div id="edit_task">
-        <h2>Edit a task</h2>
-        <p>navn <input type="text" name="name" id="trodaName"></p>
-        <p>beskrivelse <input type="text" name="name" id="trodaName"></p>
-        <p>type
-            <form>
+<div hidden="true">
+    <div id="edit_task">
+        <h3>edit a task</h3>
+        navn <input type="text" name="name" id="trodaName"><br>
+        beskrivelse <input type="text" name="name" id="trodaName"><br>
+        <input type="text" name="challengeName" id="challengeName">
+        <option value="First" style="content:url('icons/Master-Shifu-256.png')">First</option>
+        <p>
+        <label for="challengeDescription">Beskrivelse</label>
+        <input type="text" name="challengeDescription" id="challengeDescription">
+        </p>
+        <p>
+        <label for="challengeType">challengetype</label>
+        <form name="challengeType" id="challengeType">
                 <input type="radio" name="type_task" value="First">First
                 <input type="radio" name="type_task" value="Second">Second
                 <input type="radio" name="type_task" value="Third">Third
                 <input type="radio" name="type_task" value="Fourth">Fourth
-            </form>
-    </p>
+        </form>
+        </p>
+
+        <a href="#" id="add">add to toda</a>
     </div>
 
 
