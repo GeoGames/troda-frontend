@@ -16,14 +16,19 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-        var trodaId = loadTroda();
-        createMap("map", trodaId);
+            var trodaId = loadTroda();
+            var map = createMap("map", trodaId);
+            loadPoints(map, "kulturminner");
+            map.on('viewreset', function(){
+                loadPoints(map, "kulturminner");
+            });
+
         });
     </script>
 </head>
 <body>
 
-<p>Rediger troda: <span id="trodaName"></span></p>
+<p>Rediger troda: <span id="nameOfTroda"></span></p>
 
 
 <div class="span9" style="height:100%">
