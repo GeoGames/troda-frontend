@@ -34,7 +34,7 @@ function loadTroda(){
 }
 
 
-function editTask(marker, map){
+function editTask(marker, map, data){
     (function(marker, map){
         $("#add").unbind('click');
         $("#add").click(function(e){
@@ -43,8 +43,13 @@ function editTask(marker, map){
             marker.setOpacity(0.1);
 
             })})(marker, map);
-    editor=document.getElementById("edit_task");
-    return editor;
+    var editor = $(".show_task.prototype");
+    var editor2 = editor.clone();
+    editor2.removeClass('prototype');
+    editor2.find("span.navn").text(data.navn);
+    editor2.find("span.kategori").text(data.kategori);
+    editor2.find("span.art").text(data.art);
+    return editor2[0];
 }
 
 
@@ -219,7 +224,7 @@ function loadPoints(map, dataset){
         for (var i=0; i < data.length; i++){
             geoJsonLayer = L.geoJson(data[i].geojson).addTo(map);
             (function(geoJsonLayer, map){
-                geoJsonLayer.bindPopup(editTask(geoJsonLayer, map));
+                geoJsonLayer.bindPopup(editTask(geoJsonLayer, map, data[i]));
             })(geoJsonLayer, map);
 
         }
